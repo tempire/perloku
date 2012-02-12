@@ -1,5 +1,8 @@
 #!/bin/sh
-
+echo "IN"
+echo $1/Perloku
+echo -x $1/Perloku
+echo "OUT"
 if [ -x $1/Perloku ]; then
   echo "Perloku"
   exit 0
