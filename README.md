@@ -52,6 +52,14 @@ WriteMakefile(
 );
 ```
 
+Alternately, you may create a
+[cpanfile](http://search.cpan.org/~miyagawa/Module-CPANfile-1.0002/lib/cpanfile.pod)
+that lists dependencies instead:
+
+```
+requires 'Mojolicious', '2.0';
+```
+
 ## Step 3
 
 Create an executable file called Perloku which runs a server on the port
@@ -61,6 +69,7 @@ given as an enviroment variable:
 #!/bin/sh
 ./app.pl daemon --listen http://*:$PORT
 ```
+
 
 Test that you can start the server:
 
@@ -76,10 +85,13 @@ Deploy:
 ```sh
 git init
 git add .
+git update-index --chmod=+x Perloku (only if using Windows)
+git update-index --chmod=+x app.pl (only if using Windows)
 git commit -m "Initial version"
 heroku create -s cedar --buildpack http://github.com/judofyr/perloku.git
 git push heroku master
 ```
+
 
 Watch:
 
